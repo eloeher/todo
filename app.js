@@ -14,8 +14,8 @@ if(storage !== null){
 
 else{
   id = 0;
-     data = [];
-  }
+  data = [];
+}
 
 function loadData(array) {
     array.forEach(function(todo) {
@@ -35,15 +35,14 @@ document.body.onkeyup = function(e){
         });
         localStorage.setItem("StorageKey", JSON.stringify(data));
       }
-  }
-
+  };
 function newItem(todo, trash, id) {
     if (trash == true){
         return;
     }
   var ul = document.getElementById("list");
   var li = document.createElement("li");
-  li.appendChild(document.createTextNode("- "+ todo));
+  li.appendChild(document.createTextNode("-"+ todo));
   li.setAttribute("id", id);
   ul.appendChild(li);
   todo = document.getElementById("input").value = "";
