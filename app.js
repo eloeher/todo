@@ -1,6 +1,6 @@
 
 
-var storage = localStorage.getItem('StorageKey');
+var storage = localStorage.getItem("StorageKey");
 
  //if storage is not empty/if there is something in storage 
 if(storage !== null){ 
@@ -57,6 +57,7 @@ function removeItem(e) {
 
     data[element.id].trash = true;
     localStorage.setItem("StorageKey", JSON.stringify(data));
- //  e.target.parentElement.removeChild(e.target);
+
+   e.target.parentElement.removeChild(e.target);
 
 }
