@@ -15,7 +15,8 @@ input {
 	width: 500px;
 	height: 60px;
 	font-size: 40px;
-	border: 0;
+    border: 0;
+    background-color: lightsteelblue;
 }
 
 input:focus {
