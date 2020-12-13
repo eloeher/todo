@@ -53,10 +53,11 @@ function newItem(todo, trash, id) {
 function removeItem(e) {
 
     element = e.target;
-
     element.remove();
 
     data[element.id].trash = true;
     localStorage.setItem("StorageKey", JSON.stringify(data));
+
+   e.target.parentElement.removeChild(e.target);
 
 }

@@ -1,11 +1,13 @@
 html{
-	font-family: "Comic Sans", Helevetica, sans-serif;
-	text-align: center;
+	font-family: "Avenir Next", Helevetica, sans-serif;
+    text-align: center;
+    background-color: lightsteelblue;
 }
 
 body {
 	max-width: 500px;
     margin: 0 auto;
+    background-color: lightsteelblue;
 } 
 
 input {
