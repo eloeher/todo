@@ -1,33 +1,31 @@
-function newItem(todo, trash, id) {
-    if (trash == true){
-        return;
-    }
-	var ul = document.getElementById("list");
-	var li = document.createElement("li");
-  li.appendChild(document.createTextNode("- "+item));
-  li.setAttribute('id', id);
-  ul.appendChild(li);
-  document.getElementById("input").value = "";
-  li.onclick = removeItem;
-}
+
 
 var storage = localStorage.getItem('StorageKey');
+
  //if storage is not empty/if there is something in storage 
-  if(storage !== null){ 
-    //converting JSON String -> Javascript object
-    var data = JSON.parse(storage); 
+if(storage !== null){ 
+  //converting JSON String -> Javascript object
+     var data = JSON.parse(storage); 
     // load all data from the backend to the frontend. 
     loadData(data);
     //preparing the next todo item's index  
     var id = data.length; 
-  }
-  else{
-      id = 0;
-      data = [];
+}
+
+else{
+  id = 0;
+     data = [];
   }
 
+function loadData(array) {
+    array.forEach(function(todo) {
+      newItem(todo.name, todo.trash, todo.id);
+    });
+}
+
+
 document.body.onkeyup = function(e){
-      if(e.keyCode == 13){
+     if(e.keyCode == 13){
         var todo = document.getElementById("input").value;
         newItem(todo, false, id);
         data.push({
@@ -36,9 +34,21 @@ document.body.onkeyup = function(e){
             id: id
         });
         localStorage.setItem("StorageKey", JSON.stringify(data));
-        id = id + 1;
       }
   }
+
+function newItem(todo, trash, id) {
+    if (trash == true){
+        return;
+    }
+    var ul = document.getElementById("list");
+    var li = document.createElement("li");
+  li.appendChild(document.createTextNode("- "+ todo));
+  li.setAttribute("id", id);
+  ul.appendChild(li);
+  document.getElementById("input").value = "";
+  li.onclick = removeItem;
+}
 
 function removeItem(e) {
 
@@ -47,11 +57,6 @@ function removeItem(e) {
 
     data[element.id].trash = true;
     localStorage.setItem("StorageKey", JSON.stringify(data));
-  // e.target.parentElement.removeChild(e.target);
+ //  e.target.parentElement.removeChild(e.target);
 
 }
-function loadData(array) {
-    array.forEach(function(todo) {
-      newItem(todo.name, todo.trash, todo.id);
-    });
-  }
